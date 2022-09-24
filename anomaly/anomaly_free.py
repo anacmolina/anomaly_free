@@ -13,7 +13,7 @@ N_unique = (2 * inputs["m"] + 1) ** (inputs["n"] - 2)
 df = find_several_set(**inputs)
 
 print(
-    "U(1) SOLUTIONS FOR n={}, m={}, zmax={}\n".format(
+    "SOLUTIONS FOR n={}, m={}, zmax={}\n".format(
         inputs["n"], inputs["m"], inputs["zmax"]
     )
 )

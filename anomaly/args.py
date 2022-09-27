@@ -42,9 +42,17 @@ parser.add_argument(
 )
 
 parser.add_argument(
+    "--suggested_N",
+    action="store_true",
+    help="suggest an approximated 'good' N for calculating the solutions",
+)
+
+parser.add_argument(
     "--output_name",
     nargs="?",
     help="optional output file with all the solutions",
 )
+
+
 
 args = parser.parse_args()

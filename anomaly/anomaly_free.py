@@ -1,5 +1,5 @@
-from methods import find_several_set
-from args import args
+from anomaly.methods import find_several_set
+from anomaly.args import args
 
 inputs = {"n": 5, "m": 6, "N": 1000, "zmax": 30, "imax": 0, "output_name": "solution"}
 
@@ -13,7 +13,7 @@ N_unique = (2 * inputs["m"] + 1) ** (inputs["n"] - 2)
 df = find_several_set(**inputs)
 
 print(
-    "SOLUTIONS FOR n={}, m={}, zmax={}\n".format(
+    "U(1) SOLUTIONS FOR n={}, m={}, zmax={}\n".format(
         inputs["n"], inputs["m"], inputs["zmax"]
     )
 )

@@ -1,0 +1,11 @@
+README.md
+setup.py
+anomaly/__init__.py
+anomaly/anomaly_free.py
+anomaly/args.py
+anomaly/methods.py
+anomaly_free.egg-info/PKG-INFO
+anomaly_free.egg-info/SOURCES.txt
+anomaly_free.egg-info/dependency_links.txt
+anomaly_free.egg-info/top_level.txt
+bin/anomaly_free

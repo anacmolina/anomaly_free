@@ -64,8 +64,8 @@ def main():
         # Dependent packages (distributions)
         # See: https://github.com/pypa/pipenv/issues/2171
         install_requires=['numpy==1.16.5; pandas==1.3.5; python_version=="3.7"',
-            'numpy>=1.16.5; pandas>=1.3.5, python_version=="3.8"',
-            'numpy>=1.16.5; pandas>=1.3.5, python_version=="3.9"'],
+            'numpy>=1.16.5; pandas>=1.3.5; python_version=="3.8"',
+            'numpy>=1.16.5; pandas>=1.3.5; python_version=="3.9"'],
     )
 
 

@@ -1,6 +1,10 @@
 # Anomaly free
 
-This package uses the solution develop in arXiv:1905.13729 to find the solutions for the U(1) 
+This package implements the general solution to the U(1) anomaly equations the solution develop in [arXiv:1905.13729](https://arxiv.org/pdf/1905.13729.pdf) to find 
+
+$$ z_1**3 + ... + z_n**3 = 0 $$
+
+severals sets of $n$ integers, where $|z_i|<|zmax|$.
 
 ### Prerequisites
 

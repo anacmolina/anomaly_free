@@ -6,9 +6,6 @@ import pandas as pd
 import multiprocessing as multiprocessing
 import dask.array as da
 
-from anomaly_free.args import args
-
-
 def generate_lk(n, m, N):
 
     assert n >= 5
@@ -109,11 +106,11 @@ def find_several_set(n, m, N, zmax, imax, output_name):
     filename = output_name + "_{}.csv".format(n)
     RELOAD = os.path.exists(filename)
 
-    if RELOAD:
-        args.output_name = output_name
-        df = pd.read_csv(filename)
-    else:
-        df = pd.DataFrame(columns=["z", "lk", "gcd"])
+    #if RELOAD:
+    #    args.output_name = output_name
+    #    df = pd.read_csv(filename)
+    #else:
+    df = pd.DataFrame(columns=["z", "lk", "gcd"])
 
     for i in range(imax + 1):
 
@@ -136,8 +133,8 @@ def find_several_set(n, m, N, zmax, imax, output_name):
             .reset_index(drop=True)
         )
 
-    print(args.output_name)
-    if args.output_name is not None:
-        df.to_csv(filename, index=False)
+    #print(args.output_name)
+    #if args.output_name is not None:
+    #    df.to_csv(filename, index=False)
 
     return df

@@ -1,5 +1,7 @@
+from statistics import mean
 import unittest
 import pandas as pd
+from anomaly_free import methods
 
 inputs = {
     "n": 5,
@@ -32,7 +34,8 @@ print(sls_5)
 
 class Test_anomaly(unittest.TestCase):
     def test_working(self):
-        self.assertEqual(1, 1, True)
+        sls = methods.find_several_set(**inputs)
+        self.assertEqual(sls['z'].to_numpy().all(), sls_5.to_numpy().all(), True)
 
 
 if __name__ == "__main__":

@@ -1,5 +1,8 @@
 # Anomaly free
 
+![Python package](https://github.com/anacmolina/anomaly_free/workflows/Python%20package/badge.svg)
+![Upload Python Package](https://github.com/anacmolina/anomaly_free/workflows/Upload%20Python%20Package/badge.svg)
+
 This package implements the general solution to the $U(1)$ anomaly equations the solution develop in [arXiv:1905.13729](https://arxiv.org/pdf/1905.13729.pdf) to find 
 
 $$ z_1**3 + ... + z_n**3 = 0 $$

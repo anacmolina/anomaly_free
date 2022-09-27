@@ -25,7 +25,7 @@ import sys
 v = sys.version_info
 
 shell = False
-if os.name in ('nt', 'dos'):
+if os.name in ("nt", "dos"):
     shell = True
     warning = "WARNING: Windows is not officially supported"
     print(warning, file=sys.stderr)
@@ -35,38 +35,30 @@ def main():
     setup(
         # Application name:
         name="anomaly_free",
-
         # Version number (initial):
         version="0.0.1",
-
         # Application author details:
         author="anacmolina",
         author_email="anac.molina@udea.edu.co",
-
         # Packages
-        packages=find_packages(exclude=['tests']),
-
+        packages=find_packages(exclude=["tests"]),
         # Include additional files into the package
         include_package_data=True,
-
         # Details
         url="https://github.com/anacmolina/anomaly_free",
-        scripts=['bin/anomaly_free'],
-
+        scripts=["bin/anomaly_free"],
         license="BSD",
-
         description="Anomalies U(1)",
-
         long_description=open("README.md").read(),
-
         long_description_content_type="text/markdown",
-
         # Dependent packages (distributions)
         # See: https://github.com/pypa/pipenv/issues/2171
-        install_requires=['numpy==1.16.5; python_version=="3.7"',
+        install_requires=[
+            'numpy==1.16.5; python_version=="3.7"',
             'numpy>=1.16.5; python_version=="3.8"',
-            'numpy>=1.16.5; python_version=="3.9"', 'pandas'
-            ],
+            'numpy>=1.16.5; python_version=="3.9"',
+            "pandas",
+        ],
     )
 
 

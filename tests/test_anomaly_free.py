@@ -36,5 +36,6 @@ class Test_anomaly(unittest.TestCase):
         s = find_several_set(**inputs)
         self.assertEqual(s.split(), ['hello', 'world'])
 
+
 if __name__ == "__main__":
     unittest.main()

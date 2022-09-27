@@ -55,7 +55,6 @@ def main():
         # See: https://github.com/pypa/pipenv/issues/2171
         install_requires=[
             "numpy", 
-            "python_version>=3.7",
             "pandas"
         ],
     )

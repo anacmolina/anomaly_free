@@ -1,6 +1,5 @@
 import unittest
 import pandas as pd
-from anomaly_free.methods import find_several_set
 
 inputs = {
     "n": 5,
@@ -33,7 +32,6 @@ print(sls_5)
 
 class Test_anomaly(unittest.TestCase):
     def test_working(self):
-        s = find_several_set(**inputs)
         self.assertEqual(1, 1, True)
 
 

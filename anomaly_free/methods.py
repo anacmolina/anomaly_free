@@ -1,4 +1,5 @@
 import os
+from pickle import TRUE
 
 import numpy as np
 import pandas as pd
@@ -9,8 +10,6 @@ import dask.array as da
 def generate_lk(n, m, N):
 
     assert n >= 5
-
-    # Add how to use this function
 
     lk = da.random.randint(-m, m + 1, (N, n - 2))
     lk = lk.to_dask_dataframe().drop_duplicates().to_dask_array()
@@ -108,6 +107,7 @@ def find_several_set(n, m, N, zmax, imax, output_name, SAVE_FILE):
 
     if RELOAD:
         df = pd.read_csv(filename)
+        SAVE_FILE = True
     else:
         df = pd.DataFrame(columns=["z", "lk", "gcd"])
 

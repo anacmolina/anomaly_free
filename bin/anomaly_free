@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
-from anomaly_free.methods import find_several_set
+from anomaly_free.methods import find_several_sets
 
 parser = argparse.ArgumentParser(description="Anomaly free package")
 
@@ -93,7 +93,7 @@ if __name__ == "__main__":
 
         inputs['SAVE_FILE'] = SAVE_INFO
 
-        df = find_several_set(**inputs)
+        df = find_several_sets(**inputs)
 
         print(
             "U(1) SOLUTIONS FOR n={}, m={}, zmax={}\n".format(

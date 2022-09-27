@@ -7,6 +7,7 @@ import pandas as pd
 import multiprocessing as multiprocessing
 import dask.array as da
 
+
 def generate_lk(n, m, N):
 
     assert n >= 5
@@ -98,7 +99,7 @@ class Valid_Set:
             return results
 
 
-def find_several_set(n, m, N, zmax, imax, output_name, SAVE_FILE):
+def find_several_sets(n, m, N, zmax, imax, output_name, SAVE_FILE):
 
     Valid_Set.zmax = zmax
 
@@ -119,6 +120,8 @@ def find_several_set(n, m, N, zmax, imax, output_name, SAVE_FILE):
         valid_set = Valid_Set()
         results = pool.map(valid_set, lk)
         results = [set for set in results if set]
+
+        pool.close()
 
         del lk
 

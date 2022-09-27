@@ -99,18 +99,17 @@ class Valid_Set:
             return results
 
 
-def find_several_set(n, m, N, zmax, imax, output_name):
+def find_several_set(n, m, N, zmax, imax, output_name, SAVE_FILE):
 
     Valid_Set.zmax = zmax
 
     filename = output_name + "_{}.csv".format(n)
     RELOAD = os.path.exists(filename)
 
-    #if RELOAD:
-    #    args.output_name = output_name
-    #    df = pd.read_csv(filename)
-    #else:
-    df = pd.DataFrame(columns=["z", "lk", "gcd"])
+    if RELOAD:
+        df = pd.read_csv(filename)
+    else:
+        df = pd.DataFrame(columns=["z", "lk", "gcd"])
 
     for i in range(imax + 1):
 
@@ -133,8 +132,7 @@ def find_several_set(n, m, N, zmax, imax, output_name):
             .reset_index(drop=True)
         )
 
-    #print(args.output_name)
-    #if args.output_name is not None:
-    #    df.to_csv(filename, index=False)
+    if SAVE_FILE:
+        df.to_csv(filename, index=False)
 
     return df

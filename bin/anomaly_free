@@ -75,6 +75,13 @@ if __name__ == "__main__":
         if args.__dict__[arg] is not None:
             inputs[arg] = args.__dict__[arg]
 
+    SAVE_INFO = True
+
+    if args.output_name is None:
+        SAVE_INFO = False
+    else:
+        pass
+
     N_unique = (2 * inputs["m"] + 1) ** (inputs["n"] - 2)
 
     if args.suggested_N:
@@ -83,6 +90,8 @@ if __name__ == "__main__":
 
     else:
         del inputs["suggested_N"]
+
+        inputs['SAVE_FILE'] = SAVE_INFO
 
         df = find_several_set(**inputs)
 

@@ -6,10 +6,11 @@ from anomaly_free import methods
 inputs = {
     "n": 5,
     "m": 6,
-    "N": 1000,
+    "N": 10000,
     "zmax": 30,
     "imax": 0,
     "output_name": "solution",
+    "SAVE_INFO": False
 }
 
 class Test_anomaly(unittest.TestCase):

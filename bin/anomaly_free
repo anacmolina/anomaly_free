@@ -2,27 +2,36 @@ import argparse
 from anomaly_free.methods import find_several_set
 from anomaly_free.args import args
 
-inputs = {"n": 5, "m": 6, "N": 1000, "zmax": 30, "imax": 0, "output_name": "solution"}
+if __name__ == "__main__":
 
-for arg in args.__dict__:
-    if args.__dict__[arg] is not None:
-        inputs[arg] = args.__dict__[arg]
+    inputs = {
+        "n": 5,
+        "m": 6,
+        "N": 1000,
+        "zmax": 30,
+        "imax": 0,
+        "output_name": "solution",
+    }
 
-N_unique = (2 * inputs["m"] + 1) ** (inputs["n"] - 2)
+    for arg in args.__dict__:
+        if args.__dict__[arg] is not None:
+            inputs[arg] = args.__dict__[arg]
 
-if args.suggested_N:
+    N_unique = (2 * inputs["m"] + 1) ** (inputs["n"] - 2)
 
-    print("N={}*10 for n={} and m={}".format(N_unique, inputs["n"], inputs["m"]))
+    if args.suggested_N:
 
-else:
-    del inputs["suggested_N"]
+        print("N={}*10 for n={} and m={}".format(N_unique, inputs["n"], inputs["m"]))
 
-    df = find_several_set(**inputs)
+    else:
+        del inputs["suggested_N"]
 
-    print(
-        "U(1) SOLUTIONS FOR n={}, m={}, zmax={}\n".format(
-            inputs["n"], inputs["m"], inputs["zmax"]
+        df = find_several_set(**inputs)
+
+        print(
+            "U(1) SOLUTIONS FOR n={}, m={}, zmax={}\n".format(
+                inputs["n"], inputs["m"], inputs["zmax"]
+            )
         )
-    )
 
-    print(df)
+        print(df)

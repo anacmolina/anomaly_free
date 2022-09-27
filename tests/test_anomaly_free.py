@@ -31,11 +31,10 @@ sls_5.z = data_5
 print(sls_5)
 
 
-class Test_hello(unittest.TestCase):
-    def test__working(self):
-        #df = find_several_set(**inputs)
-        self.assertEqual('1', '1', True)
-
+class Test_anomaly(unittest.TestCase):
+    def test_split(self):
+        s = 'hello world'
+        self.assertEqual(s.split(), ['hello', 'world'])
 
 if __name__ == "__main__":
     unittest.main()

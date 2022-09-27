@@ -54,7 +54,7 @@ def main():
         # Dependent packages (distributions)
         # See: https://github.com/pypa/pipenv/issues/2171
         setup_requires=['numpy'],
-        install_requires=['pandas'],
+        install_requires=['pandas', 'python_version>="3.7"'],
     )
 
 

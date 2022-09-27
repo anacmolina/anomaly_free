@@ -1,3 +1,4 @@
+import argparse
 from anomaly.methods import find_several_set
 from anomaly.args import args
 
@@ -9,13 +10,19 @@ for arg in args.__dict__:
 
 N_unique = (2 * inputs["m"] + 1) ** (inputs["n"] - 2)
 
+if args.suggested_N:
 
-df = find_several_set(**inputs)
+    print("N={}*10 for n={} and m={}".format(N_unique, inputs["n"], inputs["m"]))
 
-print(
-    "U(1) SOLUTIONS FOR n={}, m={}, zmax={}\n".format(
-        inputs["n"], inputs["m"], inputs["zmax"]
+else:
+    del inputs["suggested_N"]
+
+    df = find_several_set(**inputs)
+
+    print(
+        "U(1) SOLUTIONS FOR n={}, m={}, zmax={}\n".format(
+            inputs["n"], inputs["m"], inputs["zmax"]
+        )
     )
-)
 
-print(df)
+    print(df)

@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import argparse
 from anomaly_free.methods import find_several_set
 from anomaly_free.args import args

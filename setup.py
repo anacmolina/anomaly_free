@@ -53,10 +53,8 @@ def main():
         long_description_content_type="text/markdown",
         # Dependent packages (distributions)
         # See: https://github.com/pypa/pipenv/issues/2171
-        install_requires=[
-            'numpy', 
-            'pandas'
-        ],
+        setup_requires=['numpy'],
+        install_requires=['pandas'],
     )
 
 

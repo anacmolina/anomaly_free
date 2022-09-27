@@ -6,7 +6,7 @@ import pandas as pd
 import multiprocessing as multiprocessing
 import dask.array as da
 
-from anomaly.args import args
+from anomaly_free.args import args
 
 
 def generate_lk(n, m, N):

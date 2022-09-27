@@ -1,6 +1,6 @@
 import argparse
-from anomaly.methods import find_several_set
-from anomaly.args import args
+from anomaly_free.methods import find_several_set
+from anomaly_free.args import args
 
 inputs = {"n": 5, "m": 6, "N": 1000, "zmax": 30, "imax": 0, "output_name": "solution"}
 

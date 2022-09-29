@@ -10,22 +10,22 @@ import dask.array as da
 def generate_lk(n, m, N):
     """Generates a set of N vectors of integers l and k
 
-        Eack element of l and k is minor or equal to absolute value of m
-        
-        Parameters
-        ----------
-        n : int
-            Number z values for each solution that uses an l and k vector
-        m : int
-            Highest (or lowest) value that l or k element can be
-        N : int
-            Number of l and k vectors generated
+    Eack element of l and k is minor or equal to absolute value of m
 
-        Returns
-        -------
-        array-like of ints
-            a numpy array of integers with shape (N, n-2) 
-        """
+    Parameters
+    ----------
+    n : int
+        Number z values for each solution that uses an l and k vector
+    m : int
+        Highest (or lowest) value that l or k element can be
+    N : int
+        Number of l and k vectors generated
+
+    Returns
+    -------
+    array-like of ints
+        a numpy array of integers with shape (N, n-2)
+    """
 
     assert n >= 5
 
@@ -40,19 +40,19 @@ def generate_lk(n, m, N):
 def sorted_absval(x):
     """Sorts a vector according to the absolute value, from the highest to the lowest
 
-        Eack element of l and k is minor or equal to absolute value of m
-        The argument `x` must be a numpy array
+    Eack element of l and k is minor or equal to absolute value of m
+    The argument `x` must be a numpy array
 
-        Parameters
-        ----------
-        x : array-like of ints
-            Vector to be sorted
+    Parameters
+    ----------
+    x : array-like of ints
+        Vector to be sorted
 
-        Returns
-        -------
-        array-like of ints
-            'x' numpy array sorted
-        """
+    Returns
+    -------
+    array-like of ints
+        'x' numpy array sorted
+    """
     return np.array(sorted(x, key=abs, reverse=True))
 
 
@@ -90,6 +90,18 @@ def linear_combination(x, y):
 
 
 def vectorlike_sum(lk):
+    """Compute the operation 'up + um' (or 'vp + vm') according to arXiv:1905.13729
+
+    Parameters
+    ----------
+    lk : array-like of ints
+        Vectorlike with l and k vector concat in one vector
+
+    Returns
+    -------
+    array-like
+        Result of the operation
+    """
 
     n = 2 + lk.shape[0]
     dim_l = int((n - 2) / 2)
@@ -112,21 +124,80 @@ def vectorlike_sum(lk):
 
 
 class Anomaly:
+    """
+    Class that save the info of one solution set
+    ...
+
+    Attributes
+    ----------
+    l : array-like of ints
+        vector l
+    k : array-like of ints
+        vector k
+    z : array-like of ints
+        solution set of U(1)
+    gcd : int
+        greates common divisor of z
+
+    Methods
+    -------
+    __call__(lk)
+        Computes z and save all the atributes values
+    """
+
     def __call__(self, lk):
+        """Computes the function vectorlike_sum
+
+        Parameters
+        ----------
+        lk : array-like of ints
+            Vectorlike with l and k vector concat in one vector
+
+        """
 
         n = 2 + lk.shape[0]
         dim_l = int((n - 2) / 2)
-        
-        self.l = lk[:dim_l].flatten() 
+
+        self.l = lk[:dim_l].flatten()
         self.k = lk[dim_l:].flatten()
         self.z, self.gcd = vectorlike_sum(lk)
 
 
 class Valid_Set:
+    """
+    A class that filters if the solution is correct
+     ...
+
+    Attributes
+    ----------
+    zmax : int
+        absoulte maximum value that z_i can be
+
+    Methods
+    -------
+    __call__(lk)
+        Filters all the solutions with:
+            0 on z
+            z_i > |zmax|
+            z with trivial solution like z_i and -z_i
+    """
 
     zmax = 30
 
     def __call__(self, lk):
+        """Filters all valid sets
+
+        Parameters
+        ----------
+        lk : array-like of ints
+            Vectorlike with l and k vector concat in one vector
+
+        Returns
+        -------
+        dict or {}
+            {} when z is not a solution
+            dict with the values of the solution: z, l, k, and gcd
+        """
 
         data = Anomaly()
         data(lk)
@@ -151,6 +222,30 @@ class Valid_Set:
 
 
 def find_several_sets(n, m, N, zmax, imax, output_name, SAVE_FILE):
+    """Compute the operation vectorlike_sum operation for N lk sets
+
+    Parameters
+    ----------
+    n : int
+        number of z values of each solution
+    m : int
+        max (min) value that l or k might take
+    N: int
+        max (min) value that l or k might take
+    zmax: int
+        max (min) value that z might take
+    imax:
+        maximum iterations to find z set from N the lk vectors
+    output_name: str
+        output file with the solutions
+    SAVE_FILE: bool
+
+
+    Returns
+    -------
+    array-like
+        Result of the operation
+    """
 
     Valid_Set.zmax = zmax
 

@@ -54,7 +54,7 @@ parser.add_argument(
 parser.add_argument(
     "--output_name",
     nargs="?",
-    help="optional output file with all the solutions",
+    help="optional output file json with the solutions, it will automatically recognize solution_n.json named files. It will rewrite solution if you keep using the same output_name",
 )
 
 
@@ -91,7 +91,7 @@ if __name__ == "__main__":
     else:
         del inputs["suggested_N"]
 
-        inputs['SAVE_FILE'] = SAVE_INFO
+        inputs["SAVE_FILE"] = SAVE_INFO
 
         df = find_several_sets(**inputs)
 

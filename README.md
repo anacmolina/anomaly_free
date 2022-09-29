@@ -7,7 +7,7 @@ This package implements the general solution to the $U(1)$ anomaly equations the
 
 $$ z_{1}^{3} + ... + z_{n}^{3} = 0 $$
 
-where $|z_i|<|zmax|$.
+where $|z_i|<|z_{max}|$.
 
 ## Prerequisites
 

@@ -27,23 +27,13 @@ anomaly_free --N=50000 --m=6 --zmax=30 --imax=0 --output_file=solution 5
 ```
 
 To guess a $N$ values for you $n$ you can run:
-
+```bash
 anomaly_free --suggested_N 5
+```
 
-### Sample Tests
+### Author
 
-anomaly_free 5
-anomaly_free 6
-
-## Authors
-
-  - **Ana Cristina Molina** - *Provided README Template* -
+  - **Ana Cristina Molina**
     [anacmolina](https://github.com/anacmolina)
 
-
-## License
-
-This project is licensed under the [CC0 1.0 Universal](LICENSE.md)
-Creative Commons License - see the [LICENSE.md](LICENSE.md) file for
-details
 

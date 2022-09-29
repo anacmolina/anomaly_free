@@ -8,6 +8,24 @@ import dask.array as da
 
 
 def generate_lk(n, m, N):
+    """Generates a set of N vectors of integers l and k
+
+        Eack element of l and k is minor or equal to absolute value of m
+        
+        Parameters
+        ----------
+        n : int
+            Number z values for each solution that uses an l and k vector
+        m : int
+            Highest (or lowest) value that l or k element can be
+        N : int
+            Number of l and k vectors generated
+
+        Returns
+        -------
+        array-like of ints
+            a numpy array of integers with shape (N, n-2) 
+        """
 
     assert n >= 5
 
@@ -20,10 +38,39 @@ def generate_lk(n, m, N):
 
 
 def sorted_absval(x):
+    """Sorts a vector according to the absolute value, from the highest to the lowest
+
+        Eack element of l and k is minor or equal to absolute value of m
+        The argument `x` must be a numpy array
+
+        Parameters
+        ----------
+        x : array-like of ints
+            Vector to be sorted
+
+        Returns
+        -------
+        array-like of ints
+            'x' numpy array sorted
+        """
     return np.array(sorted(x, key=abs, reverse=True))
 
 
 def linear_combination(x, y):
+    """Compute the operation 'x + y' accordin to arXiv:1905.13729
+
+    Parameters
+    ----------
+    x : array-like of ints
+        Vectorlike
+    y : array-like of ints
+        Vectorlike
+
+    Returns
+    -------
+    array-like
+        Result of the operation
+    """
 
     result = np.sum(x * (y**2)) * x - np.sum((x**2) * y) * y
 
@@ -67,8 +114,12 @@ def vectorlike_sum(lk):
 class Anomaly:
     def __call__(self, lk):
 
-        self.lk = lk
-        self.z, self.gcd = vectorlike_sum(self.lk)
+        n = 2 + lk.shape[0]
+        dim_l = int((n - 2) / 2)
+        
+        self.l = lk[:dim_l].flatten() 
+        self.k = lk[dim_l:].flatten()
+        self.z, self.gcd = vectorlike_sum(lk)
 
 
 class Valid_Set:
@@ -91,7 +142,8 @@ class Valid_Set:
 
             results = {
                 "z": data.z.tolist(),
-                "lk": data.lk.tolist(),
+                "l": data.l.tolist(),
+                "k": data.k.tolist(),
                 "gcd": data.gcd,
             }
 
@@ -109,7 +161,7 @@ def find_several_sets(n, m, N, zmax, imax, output_name, SAVE_FILE):
         df = pd.read_csv(filename)
         SAVE_FILE = True
     else:
-        df = pd.DataFrame(columns=["z", "lk", "gcd"])
+        df = pd.DataFrame(columns=["z", "l", "k", "gcd"])
 
     for i in range(imax + 1):
 

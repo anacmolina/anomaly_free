@@ -32,9 +32,6 @@ anomaly_free --suggested_N 5
 ```
 
 ### Author
-
-  - **Ana Cristina Molina**
-  
-    [anacmolina](https://github.com/anacmolina)
+[anacmolina](https://github.com/anacmolina)
 
 

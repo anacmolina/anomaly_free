@@ -36,7 +36,7 @@ def main():
         # Application name:
         name="anomaly_free",
         # Version number (initial):
-        version="0.0.1",
+        version="0.0.2",
         # Application author details:
         author="anacmolina",
         author_email="anac.molina@udea.edu.co",

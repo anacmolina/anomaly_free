@@ -6,6 +6,7 @@
 This package implements the general solution to the $U(1)$ anomaly equations the solution develop in [arXiv:1905.13729](https://arxiv.org/pdf/1905.13729.pdf) to find severals sets of $n$ integers that follows
 
 $$ z_{1} + ... + z_{n} = 0 $$
+
 $$ z_{1}^{3} + ... + z_{n}^{3} = 0 $$
 
 where $|z_i|<|z_{max}|$.

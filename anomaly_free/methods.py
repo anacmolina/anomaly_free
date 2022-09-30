@@ -5,6 +5,7 @@ import pandas as pd
 
 import multiprocessing as multiprocessing
 import dask.array as da
+import time as time
 
 
 def generate_lk(n, m, N):
@@ -258,6 +259,7 @@ def find_several_sets(n, m, N, zmax, imax, output_name, SAVE_FILE):
     else:
         df = pd.DataFrame(columns=["z", "l", "k", "gcd"])
 
+    ti = time.time()
     for i in range(imax + 1):
 
         lk = generate_lk(n, m, N)
@@ -281,7 +283,15 @@ def find_several_sets(n, m, N, zmax, imax, output_name, SAVE_FILE):
             .reset_index(drop=True)
         )
 
+    ts = time.time()
+    print("Time: {:.2f}s".format(ts - ti))
+    print("# Solutions: {}".format(df.shape[0]))
+
     if SAVE_FILE:
+        print("Solutions save in -> " + filename)
         df.to_csv(filename, index=False)
+    else:
+        print("U(1) SOLUTIONS FOR n={}, m={}, zmax={}\n".format(n, m, zmax))
+        print(df)
 
     return df

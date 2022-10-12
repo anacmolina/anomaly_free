@@ -27,7 +27,7 @@ $ pip install -i https://test.pypi.org/simple/ anomaly-free
 
 ## USAGE
 ```bash
-anomaly_free --N=50000 --m=6 --zmax=30 --imax=0 --output_file=solution 5
+anomaly_free --N=50000 --m=6 --zmax=30 --imax=0 --output_name=solution 5
 ```
 
 To guess a $N$ values for you $n$ you can run:
